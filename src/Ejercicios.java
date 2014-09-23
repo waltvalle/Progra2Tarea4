@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 // LINK DE AYUDA : http://www.sc.ehu.es/sbweb/fisica/cursoJava/fundamentos/excepciones/excepciones.htm
 class MiClase
@@ -22,7 +21,7 @@ public class Ejercicios {
 		try{ 
 			//inicio con el try e introduzco la operacion
 			num = (a/b);
-		}catch(ArithmeticException e1)
+		}catch(ArithmeticException e)
 		//El catch manejara la exception en caso de que se introduzca 0
 		{
 			System.out.print("ERROR: No se puede dividir entre 0");
@@ -40,14 +39,14 @@ public class Ejercicios {
 		try{
 			// Inicio con el try y devuelvo el arreglo tomando como valor pos
 		return arreglo[pos];
-		}catch(ArrayIndexOutOfBoundsException e2)
+		}catch(ArrayIndexOutOfBoundsException e)
 		// El catch encontrara si se excedio el limite del arreglo
 		{
 			System.out.print("ERROR: Fuera de limites");
 			// Se imprime cual fue el error
 		}
 		//Si no hay error se devuelve el arreglo con el valor de pos
-		return arreglo[pos];
+		return 0;
 	}
 	
 	
@@ -57,14 +56,14 @@ public class Ejercicios {
 	{
 		try{
 		//Inicio el try devolviendo la x de mi_clase
-		return  mi_clase.x;
-		}catch(InputMismatchException e3)
+		return mi_clase.x;
+		}catch(Exception e)
 		//el catch capturara si mi_clase da igual a Null
 		{
 			System.out.print("ERROR: Null");
 		}
-		//si no hay error se devuelve la x de mi clase
-		return mi_clase.x;
+		//si no hay error se devuelve 0
+		return 0;
 	}
 	
 	
@@ -81,7 +80,7 @@ public class Ejercicios {
 			//Aqui las operaciones. numsuma sera igual a lo que tenga + mi_lista con lo que tenga como valor i en ese momento
 			numsuma = numsuma + mi_lista.get(i);
 			//promedio sera igual a la suma de los elementos entre mi lista con lo que tenga como valor i
-			promedio = numsuma/mi_lista.get(i);
+			promedio = numsuma/mi_lista.size();
 		}
 		//se devuelve el promedio
 		return promedio;	
@@ -89,28 +88,24 @@ public class Ejercicios {
 	}
 	
 	
-	//Devuelve el numero mayor almacenado en 'mi_lista'
+//	Devuelve el numero mayor almacenado en 'mi_lista'
 	static int getMayor(ArrayList<Integer> mi_lista)
 	// LINK DE AYUDA : http://www.javaya.com.ar/detalleconcepto.php?codigo=92&inicio= 
 	{
-		// inicio con la variable mayor
-		int mayor = 0;
 		// la variable mayor contendra lo que tenga mi_lista
-		mayor = mi_lista.get(0);
-		
+		int mayor = mi_lista.get(0);
 		// ciclo for que cuenta cada uno de los elementos en el array
 		for(int i = 0; i < mi_lista.size(); i++)
 		{
 			// condicion if que compara mi_lista con lo que tenga i contra el valor de la variable mayor
-		if (mi_lista.get(i) > mayor);
-		// mayor tendra el valor de mi_lista con i como parametro
-		mayor = mi_lista.get(i);
+		if (mi_lista.get(i) > mayor)
+			// mayor tendra el valor de mi_lista con i como parametro
+			mayor = mi_lista.get(i);
 		}
 		// se devuelve el mayor del arreglo
 		return mayor;
 		
 	}
-	
 	
 	//Devuelve true si 'mi_lista' contiene 'str' de lo contrario devuelve false
 	static boolean existe(ArrayList<String> mi_lista, String str)
@@ -119,7 +114,7 @@ public class Ejercicios {
 		for(int i = 0; i < mi_lista.size(); i++)
 		{
 			//si hay un string que sea igual a "str" entonces devolvera true
-		if (mi_lista.get(i) == "str")
+		if (mi_lista.get(i) == str)
 			return true;
 		}
 		// si no se cumple la condicion devolvera false
